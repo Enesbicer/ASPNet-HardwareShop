@@ -1,0 +1,21 @@
+﻿@model NalburUrunleri.Models.ProductTable
+
+<h2>Yeni Ürün Ekle</h2>
+
+@using (Html.BeginForm("Create", "Admin", FormMethod.Post))
+{
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Name, "Ürün Adı:")
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Ürün adı giriniz" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Price, "Fiyat:")
+        @Html.TextBoxFor(model => model.Price, new { @class = "form-control", placeholder = "Fiyat giriniz" })
+        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary ms-2">Geri</a>
+}

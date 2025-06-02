@@ -1,0 +1,137 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+
+    <!-- ===================================================== -->
+    <!-- ====== Slider Bölümü (Mevcut Kod) ====== -->
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            @foreach (var image in Model)
+            {
+                <div class="slide">
+                    <img src="@Url.Content(image)" alt="@image">
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+
+
+    <!-- ====== Dinamik “İlk 3 Ürün” Bölümü (Ortalanmış Konteyner, Düz Hizalı Liste) ====== -->
+    <section class="d-flex justify-content-center my-5">
+        <div class="bg-white p-4 p-md-5 rounded shadow" style="max-width: 600px; width: 100%;">
+            <h2 class="text-center mb-3">Öne Çıkan Ürünler</h2>
+            <p class="text-center mb-4">En çok satan ürünlerimiz:</p>
+            
+            <ul class="list-unstyled text-center mb-0">
+                @{
+                    var urunListesi = ViewBag.Products as List<NalburUrunleri.Models.ProductTable>;
+                }
+                @if (urunListesi != null && urunListesi.Count > 0)
+                {
+                    foreach (var urun in urunListesi)
+                    {
+                        <li class="mb-2">• @urun.Name – @urun.Price ₺</li>
+                    }
+                }
+                else
+                {
+                    <li class="text-center">Henüz gösterilecek ürün bulunamadı.</li>
+                }
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- Ortada, güzel tasarımlı bir açıklama paragrafı -->
+    <section class="d-flex justify-content-center my-5">
+        <div class="bg-white p-4 p-md-5 rounded shadow" style="max-width: 700px; text-align: center;">
+            <p class="mb-0" style="font-size: 1.125rem; line-height: 1.6; color: #444;">
+                Nalbur Ürünleri’nde kalite ve memnuniyet her zaman ön planda! Geniş ürün yelpazemiz arasında tam da ihtiyacınıza uygun malzemeleri bulabilir,
+                uzman ekibimizden her adımda destek alabilirsiniz. Hemen keşfetmek için sayfayı aşağıya kaydırın ve fırsatları kaçırmayın.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ============================================= -->
+    <!-- Script kodları -->
+    @section Scripts {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const sliderWrapper = document.querySelector(".slider-wrapper");
+                const slides = document.querySelectorAll(".slide");
+                const totalSlides = slides.length;
+                let currentIndex = 0;
+
+                function showNextSlide() {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateSliderPosition();
+                }
+
+                function updateSliderPosition() {
+                    const offset = -currentIndex * 100;
+                    sliderWrapper.style.transform = `translateX(${offset}%)`;
+                }
+
+                setInterval(showNextSlide, 3000);
+            });
+        </script>
+    }
+
+    <!-- Style kodları -->
+    @section Styles {
+        <style>
+            .slider-container {
+                width: 100%;
+                max-width: 1000px;
+                height: 500px;
+                margin: 40px auto;
+                position: relative;
+                overflow: hidden;
+                border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            .slider-wrapper {
+                display: flex;
+                height: 100%;
+                transition: transform 0.8s ease-in-out;
+            }
+
+            .slide {
+                min-width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+                .slide img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+
+                /* İsteğe bağlı: görsel üzerine koyu katman */
+                .slide::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.3);
+                }
+        </style>
+    }
+</main>

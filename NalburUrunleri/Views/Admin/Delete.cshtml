@@ -1,0 +1,13 @@
+﻿@model NalburUrunleri.Models.ProductTable
+<div>
+    <h2>Ürünü Sil</h2>
+    <p>Bu ürünü silmek istediğinize emin misiniz?</p>
+
+    @using (Html.BeginForm("Delete", "Admin", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.Id, "Id")
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">İptal</a>
+    }
+
+</div>

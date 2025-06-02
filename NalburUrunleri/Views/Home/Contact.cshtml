@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "İletişim";
+}
+
+<main class="container my-5">
+    <h2 class="text-center mb-4">İletişim</h2>
+
+    <div class="row gy-4">
+        <!-- Sol Sütun: İletişim Bilgileri -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">Bize Ulaşın</h5>
+                    <p>
+                        Aşağıdaki iletişim bilgileri üzerinden bize her zaman ulaşabilirsiniz:
+                    </p>
+                    <ul class="list-unstyled mt-3 mb-0">
+                        <li class="mb-3">
+                            <strong>Adres:</strong><br />
+                            Örnek Mah. İnşaat Cad. No:123<br />
+                            34000 İstanbul / Türkiye
+                        </li>
+                        <li class="mb-3">
+                            <strong>Telefon:</strong><br />
+                            +90 (212) 123 45 67<br />
+                            +90 (532) 765 43 21
+                        </li>
+                        <li class="mb-3">
+                            <strong>E-posta:</strong><br />
+                            destek@nalbururunleri.com
+                        </li>
+                        <li>
+                            <strong>Çalışma Saatleri:</strong><br />
+                            Pazartesi – Cuma: 09:00 – 18:00<br />
+                            Cumartesi: 10:00 – 16:00<br />
+                            Pazar: Kapalı
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ Sütun: Google Map veya Bilgi Kartı -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">Konumumuz</h5>
+                    <p>
+                        Haritadaki konumumuzdan bizi kolayca bulabilirsiniz.
+                        Aşağıdaki harita, mağazamızın tam adresine işaret etmektedir.
+                    </p>
+                </div>
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.967334223406!2d28.97835831526025!3d41.00823797930232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768
+                        !4f13.1!3m3!1m2!1s0x14cab47e5c0de1e9%3A0x34fda9b54c5b8e22!2sAyasofya!5e0!3m2!1str!2str!4v1616161616161"
+                            style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Styles {
+    <style>
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .card-shadow {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .ratio {
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            overflow: hidden;
+        }
+    </style>
+}
